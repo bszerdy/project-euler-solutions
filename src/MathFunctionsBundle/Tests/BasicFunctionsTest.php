@@ -16,10 +16,7 @@ class BasicFunctionsTest extends PHPUnit_Framework_TestCase
 	 */
 	public function primesThatMakeEvenFalse()
 	{
-		$expected = array(11, 13);
-		$actual = BasicFunctions::primesThatMakeEven(21);
-
-		assertNotEquals($expected, $actual);
+		assertNull(BasicFunctions::primesThatMakeEven(21));
 	}
 
 	/**
@@ -27,10 +24,12 @@ class BasicFunctionsTest extends PHPUnit_Framework_TestCase
 	 */
 	public function primesThatMakeEvenTrue()
 	{
-		$expected = array(11, 13);
 		$actual = BasicFunctions::primesThatMakeEven(24);
 
-		assertEquals($expected, $actual);
+		assertTrue(count($actual) == 3);
+		assertTrue(in_array(array(11, 13), $actual));
+		assertTrue(in_array(array(5, 19), $actual));
+		assertTrue(in_array(array(7, 17), $actual));
 	}
 
 	/**
@@ -39,6 +38,14 @@ class BasicFunctionsTest extends PHPUnit_Framework_TestCase
 	public function isPrimeTrue()
 	{
 		assertTrue(BasicFunctions::isPrime(13));
+	}
+
+	/**
+	 * @test
+	 */
+	public function isPrimeTrueWithOne()
+	{
+		assertTrue(BasicFunctions::isPrime(1, TRUE));
 	}
 
 	/**

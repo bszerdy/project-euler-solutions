@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="bootstrap.php">
+<phpunit
+        stopOnError="false"
+        stopOnFailure="false"
+        bootstrap="bootstrap.php">
     <filter>
         <whitelist>
             <directory>.</directory>

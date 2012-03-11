@@ -17,30 +17,23 @@ class BasicFunctions
 	 */
 	public static function primesThatMakeEven($number)
 	{
-		$retval = null;
+		$retval = NULL;
 
-		if (BasicFunctions::isPrime($number)) {
+		/* if it's not an even number this is pointless */
+		if ($number % 2 != 0) {
 			return $retval;
 		}
 
-		if (($number & 1) == 1) {
-			return array(0, 0);
-		}
-
+		/* satisfy the purists that say 1 and 2 are prime */
 		if ($number == 2) {
 			return array(1, 1);
+		} elseif ($number == 3) {
+			return array(1, 2);
 		}
 
-		for ($i = 1; $i < $number; $i += 2) {
-			if (BasicFunctions::isPrime($i)) {
-				for ($j = $number -1; $j > $i; $j -= 2) {
-					if (BasicFunctions::isPrime($j)) {
-						if ($i + $j == $number) {
-							$retval = array($i, $j);
-							break;
-						}
-					}
-				}
+		for ($i = 3; $i < (($number-1)/2); $i += 2) {
+			if ((BasicFunctions::isPrime($i)) && (BasicFunctions::isPrime($number - $i))) {
+				$retval[] = array($i, $number - $i);
 			}
 		}
 
