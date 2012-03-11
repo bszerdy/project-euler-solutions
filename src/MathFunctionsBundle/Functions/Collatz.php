@@ -1,6 +1,6 @@
 <?php
 
-namespace src\MathFunctions;
+namespace MathFunctionsBundle\Functions;
 
 /**
  * Created by JetBrains PhpStorm.
@@ -20,16 +20,14 @@ class Collatz
 		$this->showStatus = $showStatus;
 	}
 
-	public function solution() {
-		if ($this->start == 1) {
-			return 1;
-		}
-
+	public function solution()
+	{
 		$begin = $this->start;
 		$this->maxHeight = $begin;
 		$retval = 0;
+		$done = FALSE;
 
-		while ($begin > 1) {
+		while (!$done) {
 			$retval++;
 			if (($begin % 2) == 0) { /* even */
 				$begin /= 2;
@@ -42,12 +40,16 @@ class Collatz
 			}
 
 			if ($this->showStatus) {
-				print(sprintf("Step %s: value: %s", $retval, $begin));
+				print(sprintf("Step %s: value: %s\n", $retval, $begin));
+			}
+
+			if ($begin == 1) {
+				$done = TRUE;
 			}
 		}
 
         if ($this->showStatus) {
-			print(sprintf("Solution took %s cycles, with a maximum value of %s.", $retval, $this->maxHeight));
+			print(sprintf("Solution took %s cycles, with a maximum value of %s.\n", $retval, $this->maxHeight));
 		}
 
 		$this->cycles = $retval;
