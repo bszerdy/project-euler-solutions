@@ -3,19 +3,80 @@
 namespace MathFunctionsBundle\Functions;
 
 /**
- * User: threadhack <threadhack@gmail.com>
- * Date: 2012-03-10
+ * @author threadhack <threadhack@gmail.com>
+ * @created 2012-03-10
  */
 class BasicFunctions
 {
 	/**
+	 * Returns an array of all proper divisors of a number
+	 *
+	 * @static
+	 * @param $number
+	 * @return array|null
+	 */
+	public static function getProperDivisors($number)
+	{
+		if ($number < 0) {
+			return NULL;
+		}
+
+        $retval = array();
+
+        for ($i = 1; $i <= $number; $i++) {
+			if (($number % $i) == 0) {
+				$retval[] = $i;
+			}
+		}
+
+		return $retval;
+	}
+
+	/**
+	 * Returns a list of factors of the given number
+	 *
+	 * @static
+	 * @param $number
+	 * @param bool $showStatus
+	 * @return array
+	 */
+	public static function getFactors($number, $showStatus = FALSE)
+	{
+		$n = 1;
+		$retval = array();
+		$max = ($number % 2 == 0) ? ($number / 2) : (($number + 1) / 2);
+		while ($n <= $max) {
+			if (($number % $n) == 0) {
+				$mate = $number / $n;
+				if ($showStatus) {
+					printf("%s and %s are factors of %s\n", $n, $mate, $number);
+					ob_flush();
+				}
+
+				if (!in_array($n, $retval, TRUE)) {
+					$retval[] = $n;
+				}
+				if (($mate != $n) && (!in_array($mate, $retval, TRUE))) {
+					$retval[] = $mate;
+				}
+			}
+
+			$n++;
+		}
+
+		sort($retval);
+		return $retval;
+	}
+
+	/**
 	 * Every even number is the sum of two primes, This function returns the
 	 *	two primes that make up an even number.
 	 *
-	 * @param long num
-	 * @return long[]
+	 * @static
+	 * @param $number
+	 * @return array|null
 	 */
-	public static function primesThatMakeEven($number)
+	public static function getPrimesThatMakeAnEvenNumber($number)
 	{
 		$retval = NULL;
 
@@ -42,6 +103,7 @@ class BasicFunctions
 
 	/**
 	 * Tests if the number is a prime number using the Sieve of Eratosthenes
+	 *
 	 * @static
 	 * @param $number
 	 * @return bool
@@ -69,6 +131,7 @@ class BasicFunctions
 
 	/**
 	 * A palindrome is a number of units that can be read the same way in either direction
+	 *
 	 * @static
 	 * @param $number
 	 * @param bool $showStatus

@@ -3,9 +3,8 @@
 namespace MathFunctionsBundle\Functions;
 
 /**
- * Created by JetBrains PhpStorm.
- * User: threadhack
- * Date: 2012-02-14
+ * @author threadhack
+ * @created 2012-02-14
  */
 class Collatz
 {

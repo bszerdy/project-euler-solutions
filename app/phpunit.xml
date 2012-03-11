@@ -2,6 +2,7 @@
 <phpunit
         stopOnError="false"
         stopOnFailure="false"
+        stopOnSkipped="false"
         bootstrap="bootstrap.php">
     <filter>
         <whitelist>

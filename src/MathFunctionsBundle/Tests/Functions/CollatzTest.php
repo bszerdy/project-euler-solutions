@@ -6,8 +6,8 @@ use \MathFunctionsBundle\Functions\Collatz;
 use \PHPUnit_Framework_TestCase;
 
 /**
- * User: threadhack <threadhack@gmail.com>
- * Date: 2012-02-14
+ * @author threadhack <threadhack@gmail.com>
+ * @created 2012-02-14
  */
 class CollatzTest extends PHPUnit_Framework_TestCase
 {
