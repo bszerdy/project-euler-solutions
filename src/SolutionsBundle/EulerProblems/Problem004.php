@@ -20,6 +20,9 @@ class Problem004 implements EulerProblem
 	const CEILING = 999;
 	const START = 100;
 
+	/**
+	 * @return int
+	 */
 	public function solve()
 	{
 		$retval = 0;

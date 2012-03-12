@@ -17,6 +17,9 @@ class Problem003 implements EulerProblem
 {
 	const SUBJECT = 600851475143;
 
+	/**
+	 * @return int
+	 */
 	public function solve()
 	{
 		$retval = 0;

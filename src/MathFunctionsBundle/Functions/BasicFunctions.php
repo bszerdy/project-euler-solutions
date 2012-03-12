@@ -114,6 +114,10 @@ class BasicFunctions
 			return TRUE;
 		}
 
+		if ($number % 2 == 0) {
+			return FALSE;
+		}
+
 		$prime = TRUE;
 		for ($i=3;$i<=sqrt($number);$i+=2) {
 			if ($number % $i == 0) {
@@ -122,11 +126,7 @@ class BasicFunctions
 			}
 		}
 
-		if (($number % 2 != 0) && ($prime)) {
-			return TRUE;
-		} else {
-			return FALSE;
-		}
+		return $prime;
 	}
 
 	/**
