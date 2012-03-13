@@ -4,9 +4,14 @@
         stopOnFailure="false"
         stopOnSkipped="false"
         bootstrap="bootstrap.php">
-    <filter>
-        <whitelist>
-            <directory>.</directory>
-        </whitelist>
-    </filter>
+    <testsuites>
+        <testsuite name="Project Euler Tests">
+			<file>../src/MathFunctionsBundle/Tests/Functions/BasicFunctionsTest.php</file>
+			<file>../src/MathFunctionsBundle/Tests/Functions/CollatzTest.php</file>
+            <file>../src/SolutionsBundle/Tests/EulerProblems/AllSolutionsInOne.php</file>
+        </testsuite>
+    </testsuites>
+    <php>
+        <includePath>/Users/Threadhack/pear/share/pear</includePath>
+    </php>
 </phpunit>

@@ -23,10 +23,10 @@ class Problem003 implements EulerProblem
 	public function solve()
 	{
 		$retval = 0;
-		$prime_factors = BasicFunctions::getFactors(self::SUBJECT, TRUE);
+		$prime_factors = BasicFunctions::getFactors(self::SUBJECT);
 
 		foreach ($prime_factors as $factor) {
-			if ($factor > $retval) {
+			if (($factor > $retval) && (BasicFunctions::isPrime($factor))) {
 				$retval = $factor;
 			}
 		}

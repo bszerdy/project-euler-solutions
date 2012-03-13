@@ -18,9 +18,9 @@ class CollatzTest extends PHPUnit_Framework_TestCase
 	{
 		$expected = 3;
 		$start = 1;
-        $instance = new Collatz($start, TRUE);
+        $instance = new Collatz($start);
 
-		$actual = $instance->solution();
+		$actual = $instance->solve();
 
 		assertEquals($expected, $actual);
 	}
@@ -32,10 +32,20 @@ class CollatzTest extends PHPUnit_Framework_TestCase
 	{
 		$expected = 10;
 		$start = 24;
-		$instance = new Collatz($start, TRUE);
+		$instance = new Collatz($start);
 
-		$actual = $instance->solution();
+		$actual = $instance->solve();
 
 		assertEquals($expected, $actual);
+	}
+
+	/**
+	 * @test
+	 * @expectedException OutOfRangeException
+	 */
+	public function solveThrows()
+	{
+		$instance = new Collatz();
+		$instance->setStart(-1);
 	}
 }

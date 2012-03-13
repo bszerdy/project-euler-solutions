@@ -50,7 +50,6 @@ class BasicFunctions
 				$mate = $number / $n;
 				if ($showStatus) {
 					printf("%s and %s are factors of %s\n", $n, $mate, $number);
-					ob_flush();
 				}
 
 				if (!in_array($n, $retval, TRUE)) {

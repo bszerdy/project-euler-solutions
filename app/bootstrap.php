@@ -1,7 +1,7 @@
 <?php
 
-require_once '/Users/threadhack/pear/share/pear/Symfony/Component/ClassLoader/UniversalClassLoader.php';
-require_once 'PHPUnit/Framework/Assert/Functions.php';
+require_once '/opt/local/etc/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+require_once '/opt/local/lib/php/PHPUnit/Framework/Assert/Functions.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 

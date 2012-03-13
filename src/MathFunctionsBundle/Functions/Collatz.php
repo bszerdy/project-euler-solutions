@@ -13,13 +13,33 @@ class Collatz
 	protected $start = 1;
 	protected $showStatus = FALSE;
 
+	/**
+	 * @param int $start
+	 * @param bool $showStatus
+	 */
 	public function __construct($start = 1, $showStatus = FALSE)
 	{
 		$this->start = $start;
 		$this->showStatus = $showStatus;
 	}
 
-	public function solution()
+	/**
+	 * @param $start
+	 * @throws \OutOfRangeException
+	 */
+	public function setStart($start)
+	{
+		if ($start <= 0) {
+			throw new \OutOfRangeException();
+		}
+
+		$this->start = $start;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function solve()
 	{
 		$begin = $this->start;
 		$this->maxHeight = $begin;
