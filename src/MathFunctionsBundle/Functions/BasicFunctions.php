@@ -8,6 +8,24 @@ namespace MathFunctionsBundle\Functions;
  */
 class BasicFunctions
 {
+	/* var array */
+	private static $ONES = array('', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine');
+
+	/* var array */
+	private static $TEENS = array('ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen');
+
+	/* var array */
+	private static $TENS = array('', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety');
+
+	/* var array */
+	private static $HUNDRED  = 'hundred';
+
+	/* var array */
+	private static $THOUSAND = 'thousand';
+
+	/* var array */
+	private static $AND = 'and';
+
 	/**
 	 * Returns an array of all proper divisors of a number
 	 *
@@ -155,5 +173,67 @@ class BasicFunctions
 		}
 
 		return TRUE;
+	}
+
+	/**
+	 * @static
+	 * @param $number
+	 * @return mixed
+	 * @throws \InvalidArgumentException
+	 */
+	public static function getHundredSpelledOut($number)
+	{
+		if (strlen($number) != 3) {
+			throw new \InvalidArgumentException('This function only accepts a triple-digit number.');
+		}
+
+		$number = strval($number);
+		$hundos = $number[0];
+		$tens = $number[1];
+		$ones = $number[2];
+
+		if (($tens == 0) && ($ones == 0)) {
+			return self::$ONES[$hundos] .' '. self::$HUNDRED;
+		} else {
+			return self::$ONES[$hundos] .' '. self::$HUNDRED .' '. self::$AND .' '
+				. self::getTensSpelledOut(intval($tens.$ones));
+		}
+	}
+
+	/**
+	 * @static
+	 * @param $number
+	 * @return mixed
+	 * @throws \InvalidArgumentException
+	 */
+	public static function getTensSpelledOut($number)
+	{
+		if (strlen($number) != 2) {
+			throw new \InvalidArgumentException('This function only accepts a double-digit number.');
+		}
+		$number = strval($number);
+		$tens = intval($number[0]);
+		$ones = intval($number[1]);
+
+		if ($tens == 1) {
+			return self::$TEENS[$ones];
+		} else {
+			return self::$TENS[$tens] .'-'. self::$ONES[$ones];
+		}
+	}
+
+	/**
+	 * @static
+	 * @param $number
+	 * @return mixed
+	 * @throws \InvalidArgumentException
+	 */
+	public static function getOnesSpelledOut($number)
+	{
+		if (strlen($number) > 1) {
+			throw new \InvalidArgumentException('This function only accepts single digits.');
+		}
+
+		return self::$ONES[$number];
 	}
 }

@@ -33,24 +33,31 @@ use MathFunctionsBundle\Functions\BasicFunctions;
 class Problem012 implements EulerProblem
 {
 	/* @var int */
-	const CEILING = 10000;
+	const CEILING = 13000;
 
 	/**
+	 * @param int $start
+	 * @param int $total
 	 * @return int
 	 */
-	public function solve()
+	public function solve($start = 1, $total = 0)
 	{
-		$factor_me = 0;
-		for ($i=1;$i<self::CEILING;$i++) {
+		$retval = -1;
+		$factor_me = $total;
+		$i = $start;
+
+		while ($i < self::CEILING) {
 			$factor_me += $i;
 			$factors = count(BasicFunctions::getFactors($factor_me));
-			printf("cycle: %s - count: %s | total: %s\n",$i, $factors, $factor_me);
-			ob_flush();
+
 			if ($factors >= 500) {
-				return $factor_me;
+				$retval = $factor_me;
+				break;
 			}
+
+			$i+=1;
 		}
 
-		return -1;
+		return $retval;
 	}
 }
