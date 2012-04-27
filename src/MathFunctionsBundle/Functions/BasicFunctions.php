@@ -12,7 +12,8 @@ class BasicFunctions
 	private static $ONES = array('', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine');
 
 	/* var array */
-	private static $TEENS = array('ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen');
+	private static $TEENS = array('ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen',
+        'eighteen', 'nineteen');
 
 	/* var array */
 	private static $TENS = array('', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety');
@@ -123,11 +124,12 @@ class BasicFunctions
 	 *
 	 * @static
 	 * @param $number
+     * @param $considerOnePrime
 	 * @return bool
 	 */
-	public static function isPrime($number)
+	public static function isPrime($number, $considerOnePrime = TRUE)
 	{
-		if (($number == 1) || ($number == 2)) {
+		if ((($number == 1) && ($considerOnePrime))|| ($number == 2)) {
 			return TRUE;
 		}
 

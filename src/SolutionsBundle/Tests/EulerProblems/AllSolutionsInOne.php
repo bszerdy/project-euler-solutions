@@ -13,9 +13,38 @@ class AllSolutionsInOne extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function Problem035()
+    {
+        $problem = new \SolutionsBundle\EulerProblems\Problem035();
+        assertEquals(0, $problem->solve());
+    }
+
+    /**
+     * @test
+     */
+    public function Problem022()
+    {
+        $problem = new \SolutionsBundle\EulerProblems\Problem022();
+        assertEquals(871198282, $problem->solve());
+    }
+
+    /**
+     * @test
+     */
+    public function Problem021()
+    {
+        $this->markTestIncomplete("Problem021");
+        $problem = new \SolutionsBundle\EulerProblems\Problem021();
+        assertEquals(0, $problem->solve());
+    }
+
+    /**
+     * @test
+     */
     public function Problem020()
     {
-        $this->markTestIncomplete('Not Solved');
+        $problem = new \SolutionsBundle\EulerProblems\Problem020();
+        assertEquals(648, $problem->solve());
     }
 
     /**
@@ -75,6 +104,7 @@ class AllSolutionsInOne extends PHPUnit_Framework_TestCase
 	 */
 	public function Problem012()
 	{
+        $this->markTestSkipped('needs a better solution');
 		$problem = new \SolutionsBundle\EulerProblems\Problem012();
 		assertEquals(76576500, $problem->solve(12375, 76564125));
 	}
@@ -148,6 +178,7 @@ class AllSolutionsInOne extends PHPUnit_Framework_TestCase
 	 */
 	public function Problem004()
 	{
+        $this->markTestSkipped('needs a better solution');
 		$problem = new \SolutionsBundle\EulerProblems\Problem004();
 		assertEquals(906609, $problem->solve());
 	}
