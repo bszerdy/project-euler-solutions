@@ -23,17 +23,38 @@ class Problem035 implements EulerProblem
         $primes = explode(',', $primes_str);
 
         foreach ($primes as $prime) {
+
             if (strlen($prime) == 1) {
                 $count++;
                 continue;
             }
 
-            if ((strlen($prime) == 2) && (in_array(strrev($prime), $primes))) {
-                $count++;
+            if (strlen($prime) == 2) {
+                if (in_array(strrev($prime), $primes)) {
+                    $count++;
+                    continue;
+                } else {
+                    continue;
+                }
+            }
+
+            /* if it ends in an even number it's not prime */
+            if (strpbrk($prime, '02468') !== FALSE) {
                 continue;
             }
 
+            $temp = $prime;
+            do {
+                /* char shift */
+                $temp = substr($temp, 1) . substr($temp,0,1);
 
+                if (!in_array(intval($temp), $primes)) {
+                    continue 2;
+                }
+
+            } while ($temp != $prime);
+
+            $count++;
         }
 
         return $count;
