@@ -8,7 +8,8 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
 	'MathFunctionsBundle' => __DIR__ .'/../src',
-	'SolutionsBundle' => __DIR__.'/../src'
+	'SolutionsBundle' => __DIR__.'/../src',
+        'Utility' => __DIR__.'/../src',
 ));
 
 $loader->register();
